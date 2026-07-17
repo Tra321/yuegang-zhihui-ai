@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-security/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-security/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-dependencies/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-dependencies/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-deploy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-deploy/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-platform/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-platform/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-platform/ygh-auth-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-platform/ygh-auth-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-platform/ygh-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-platform/ygh-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-tests/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-tests/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
