@@ -38,12 +38,12 @@ public final class VersionedDomainEvent<T> implements DomainEvent<T> { // 实现
 
     @Override
     public EventMetadata metadata() {
-        return null;
+        return metadata;
     }
 
     @Override
     public T payload() {
-        return null;
+        return payload;
     }
 
     private static Map<String, Object> immutableMap(Map<String, Object> source) { // 深度递归不可变的Map转换
