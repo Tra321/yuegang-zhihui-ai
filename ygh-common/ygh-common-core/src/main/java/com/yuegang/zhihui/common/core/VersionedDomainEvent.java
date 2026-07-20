@@ -42,7 +42,7 @@ public final class VersionedDomainEvent<T> implements DomainEvent<T> { // 实现
     }
 
     @Override
-    public T playLoad() {
+    public T payload() {
         return null;
     }
 
