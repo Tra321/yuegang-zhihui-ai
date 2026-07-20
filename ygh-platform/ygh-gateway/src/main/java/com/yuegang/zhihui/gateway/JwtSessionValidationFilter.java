@@ -49,7 +49,7 @@ final class JwtSessionValidationFilter implements GlobalFilter, Ordered {
         // 调用分布式 Redis 查找该账号的 JTI 是否在黑名单或已失效
         return sessions.valid(accountId, jwt.getId())
                 .map(valid -> valid ? SessionCheck.ACTIVE : SessionCheck.REJECTED)
-                .onErrorReturn(SessionCheck.UNAVALIABLE)
+                .onErrorReturn(SessionCheck.UNAVAILABLE)
                 .flatMap(check -> switch (check) {
                     case ACTIVE -> chain.filter(exchange);      // 会话正常，放行
                     case REJECTED -> errors.unauthenticated(exchange);      // 会话失效，拦截
@@ -64,6 +64,6 @@ final class JwtSessionValidationFilter implements GlobalFilter, Ordered {
     private enum SessionCheck {
         ACTIVE,
         REJECTED,
-        UNAVALIABLE
+        UNAVAILABLE
     }
 }

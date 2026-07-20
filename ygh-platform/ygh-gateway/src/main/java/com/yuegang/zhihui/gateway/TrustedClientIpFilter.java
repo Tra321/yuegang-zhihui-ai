@@ -43,7 +43,7 @@ final class TrustedClientIpFilter implements GlobalFilter, Ordered {
         try {
             this.signatures = new InternalRequestSignature(secret, clock, Duration.ofSeconds(30));   // 签名有效期 30 秒
         }finally {
-            Arrays.fill(secret, (byte) 0);
+            Arrays.fill(secret, (byte) 0); // 擦除敏感内存
         }
     }
 
