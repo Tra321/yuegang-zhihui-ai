@@ -19,10 +19,10 @@
 </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.yuegang.zhihui</groupId>-->
-<!--            <artifactId>ygh-common-core</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.yuegang.zhihui</groupId>
+            <artifactId>ygh-common-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>

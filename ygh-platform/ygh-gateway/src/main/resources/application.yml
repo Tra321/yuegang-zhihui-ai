@@ -1,0 +1,121 @@
+server: # 服务器节点配置
+  port: ${YGH_GATEWAY_PORT:8080} # 监听端口，优先读取环境变量 YGH_GATEWAY_PORT，若无则默认为 8080
+  shutdown: graceful # 开启优雅停机，确保在关闭前处理完存量请求
+
+spring: # Spring 原生配置
+  application: # 应用定义
+    name: ygh-gateway # 微服务名称，注册到 Nacos 上的服务标识
+  main: # 主配置
+    web-application-type: reactive # 强制指定 Web 类型为响应式（WebFlux），网关必须运行在此模式下
+  lifecycle: # 容器生命周期管理
+    timeout-per-shutdown-phase: 20s # 优雅停机阶段的超时时间，设为 20 秒
+  data: # 数据访问配置
+    redis: # Redis 相关配置，用于 Session 校验、限流等
+      host: ${YGH_REDIS_HOST} # Redis 服务器主机地址，从环境变量读取
+      port: ${YGH_REDIS_PORT:6379} # Redis 端口，默认 6379
+      password: ${YGH_REDIS_PASSWORD} # Redis 连接密码，从环境变量读取
+      timeout: 2s # Redis 连接及请求的超时时间
+  cloud: # Spring Cloud 相关配置
+    nacos: # Nacos 服务中心配置
+      server-addr: ${YGH_NACOS_SERVER_ADDR} # Nacos 服务器地址
+      username: ${YGH_NACOS_USERNAME} # Nacos 登录用户名
+      password: ${YGH_NACOS_PASSWORD} # Nacos 登录密码
+      discovery: # 服务发现配置
+        enabled: ${YGH_NACOS_DISCOVERY_ENABLED:true} # 是否启用服务发现，默认为开启
+        namespace: ${YGH_NACOS_NAMESPACE:ygh-dev} # Nacos 命名空间 ID，用于环境隔离（如开发、测试、生产）
+        group: ${YGH_NACOS_DISCOVERY_GROUP:YGH_GROUP} # 服务分组名称，默认为 YGH_GROUP
+        ip: ${YGH_SERVICE_IP:} # 指定向 Nacos 注册的宿主机 IP，解决虚拟机/多网卡环境下的 IP 识别问题
+    gateway: # Spring Cloud Gateway 网关核心路由配置
+      server: # 网关服务器配置
+        webflux: # 响应式 Web 配置
+          routes: # 路由条目列表
+            - id: auth-service # 路由 ID：认证服务
+              uri: lb://ygh-auth-service # 目标地址，lb:// 表示开启 LoadBalancer 负载均衡访问
+              predicates: # 匹配规则
+                - Path=/api/v1/auth/** # 当路径匹配此规则时进行转发
+            - id: user-service # 路由 ID：用户服务
+              uri: lb://ygh-user-service # 转发到用户微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/users/**,/api/v1/organization/** # 匹配用户和组织架构相关的路径
+            - id: system-service # 路由 ID：系统服务
+              uri: lb://ygh-system-service # 转发到系统配置微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/system/**,/api/v1/roles/**,/api/v1/permissions/** # 匹配字典、权限、角色路径
+            - id: product-service # 路由 ID：商品服务
+              uri: lb://ygh-product-service # 转发到商品微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/products/**,/api/v1/product-categories,/api/v1/product-brands,/api/v1/admin/products/**,/api/v1/admin/product-categories,/api/v1/admin/product-brands # 匹配前台及后台商品管理路径
+            - id: inventory-service # 路由 ID：库存服务
+              uri: lb://ygh-inventory-service # 转发到库存微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/admin/inventory/** # 匹配后台库存管理路径
+            - id: order-service # 路由 ID：订单服务
+              uri: lb://ygh-order-service # 转发到订单微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/cart/**,/api/v1/orders/**,/api/v1/admin/orders/** # 匹配购物车、前台订单及后台订单管理路径
+            - id: wallet-service # 路由 ID：钱包服务
+              uri: lb://ygh-wallet-service # 转发到钱包/虚拟资金微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/wallet/**,/api/v1/admin/wallet/** # 匹配钱包业务路径
+            - id: knowledge-service # 路由 ID：知识库服务
+              uri: lb://ygh-knowledge-service # 转发到文档知识库服务
+              predicates: # 匹配规则
+                - Path=/api/v1/knowledge/**,/api/v1/admin/knowledge/** # 匹配知识库及管理路径
+            - id: ai-service # 路由 ID：AI服务
+              uri: lb://ygh-ai-service # 转发到大模型编排服务
+              predicates: # 匹配规则
+                - Path=/api/v1/ai/**,/api/v1/admin/ai/** # 匹配 AI 会话及管理路径
+            - id: training-service # 路由 ID：培训服务
+              uri: lb://ygh-training-service # 转发到员工培训微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/training/** # 匹配培训业务路径
+            - id: notification-service # 路由 ID：通知服务
+              uri: lb://ygh-notification-service # 转发到消息/通知微服务
+              predicates: # 匹配规则
+                - Path=/api/v1/notifications/**,/api/v1/admin/notifications/** # 匹配消息业务路径
+            - id: admin-service # 路由 ID：后台聚合服务
+              uri: lb://ygh-admin-service # 转发到管理后台专用聚合接口
+              predicates: # 匹配规则
+                - Path=/api/v1/admin/dashboard,/api/v1/admin/audit-logs # 匹配仪表盘和审计日志路径
+
+ygh: # 本项目自定义业务配置根节点
+  internal-request: # 内部请求安全配置
+    enabled: ${YGH_INTERNAL_REQUEST_SIGNATURE_ENABLED:true} # 是否开启内部请求 HMAC 签名校验
+    hmac-base64: ${YGH_INTERNAL_REQUEST_HMAC_BASE64} # 内部请求签名的 Base64 密钥
+  gateway: # 网关业务扩展配置
+    cors: # 跨域配置
+      allowed-origins: ${YGH_GATEWAY_CORS_ALLOWED_ORIGINS} # 允许跨域访问的原始域名（由 Java 代码解析）
+    request: # 请求策略配置
+      max-size: ${YGH_GATEWAY_REQUEST_MAX_SIZE:2MB} # 普通请求体最大限制，默认 2MB
+      upload-max-size: ${YGH_GATEWAY_UPLOAD_MAX_SIZE:50MB} # 文件上传请求体最大限制，默认 50MB
+      upload-paths: ${YGH_GATEWAY_UPLOAD_PATHS:/api/v1/knowledge/documents,/api/v1/training/documents,/api/v1/products/images} # 允许进行文件上传操作的特定路径白名单
+    sentinel: # Sentinel 流量控制配置
+      auth-qps: ${YGH_GATEWAY_AUTH_QPS:20} # 登录/认证相关接口的每秒查询率限制
+      auth-burst: ${YGH_GATEWAY_AUTH_BURST:5} # 认证接口允许的突发请求量
+      service-qps: ${YGH_GATEWAY_SERVICE_QPS:100} # 普通业务接口的每秒查询率限制
+      service-burst: ${YGH_GATEWAY_SERVICE_BURST:10} # 业务接口允许的突发请求量
+  security: # 安全认证配置
+    session-validation: # 会话有效性验证
+      enabled: ${YGH_GATEWAY_SESSION_VALIDATION_ENABLED:true} # 是否开启 Redis 会话状态校验（支持主动踢人/注销）
+    jwt: # JWT 令牌配置
+      issuer: ${YGH_JWT_ISSUER} # 令牌签发者标识
+      jwk-set-uri: ${YGH_JWT_JWK_SET_URI} # 公钥集地址，用于网关验证 JWT 签名的真实性
+      audience: ${YGH_JWT_AUDIENCE:ygh-api} # 令牌预期的接收者标识
+  redis: # 自定义 Redis 扩展配置
+    environment: ${YGH_REDIS_ENVIRONMENT} # 当前环境名称，用于 Redis Key 的前缀区隔（如 dev, prod）
+
+management: # Spring Boot Actuator 监控端点配置
+  endpoints: # 端点管理
+    web: # Web 可访问性
+      exposure: # 暴露端点
+        include: health,info # 在基础层面暴露健康检查和基础信息端点
+  endpoint: # 具体端点细节配置
+    health: # 健康检查端点
+      probes: # 探测器配置
+        enabled: true # 启用 Liveness（存活）和 Readiness（就绪）探测
+        add-additional-paths: true # 在标准路径之外添加额外路径（如 /livez, /readyz）
+      show-details: never # 默认不向普通用户展示健康检查的详细子项信息
+management.endpoints.web.exposure.include: health,info,metrics,prometheus # 进一步暴露指标和 Prometheus 采集端点
+management.endpoint.health.probes.enabled: true # 重申开启探测器
+management.endpoint.health.show-details: when-authorized # 仅对通过授权的访问（如监控系统）展示详细状态
+management.metrics.tags.application: ${spring.application.name} # 为所有度量指标添加应用名称标签，方便在 Grafana 中筛选
