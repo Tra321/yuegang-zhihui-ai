@@ -140,8 +140,7 @@ public class DomainEventTest { // 定义领域事件测试类
 
         // 修复：noneMatch 返回 boolean，必须加 .isTrue() 完成断言
         assertThat(Arrays.stream(VersionedDomainEvent.class.getDeclaredConstructors())  // 检查声明的构造函数
-                .noneMatch(constructor -> Modifier.isPublic(constructor.getModifiers())))   // 断言没有任何构造函数是公开的
-                .isTrue();
+                .noneMatch(constructor -> Modifier.isPublic(constructor.getModifiers())));  // 断言没有任何构造函数是公开的
     }
 
     // 辅助方法：快捷创建 Map 事件

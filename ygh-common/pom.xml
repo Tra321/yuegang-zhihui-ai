@@ -30,5 +30,6 @@
     <modules>
         <module>ygh-common-security</module>
         <module>ygh-common-core</module>
+        <module>ygh-common--redis</module>
     </modules>
 </project>
