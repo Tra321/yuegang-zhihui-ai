@@ -14,7 +14,7 @@ public class GatewaySentinelRuleSet {
 
     static Set<GatewayFlowRule> create(double authQps, int authBurst, double serviceQps, int serviceBurst) {
         // 校验配置数值是否在合理范围内
-        requireBoundedQps(authQps,"authQps");
+        requireBoundedQps(authQps);
         requireBoundedBurst(authBurst,"authBurst");
         requireBoundedBurst(authBurst,"serviceQPS");
         requireBoundedBurst(authBurst,"serviceBurst");
@@ -34,9 +34,9 @@ public class GatewaySentinelRuleSet {
                 .setBurst(burst); // 允许超额突发的排队数
     }
 
-    private static void requireBoundedQps(double value, String name) {
+    private static void requireBoundedQps(double value) {
         if (!Double.isFinite(value) || value <= 0 || value > MAX_QPS) {
-            throw new IllegalArgumentException(name + " must be between 0 and" + MAX_QPS);
+            throw new IllegalArgumentException("authQps" + " must be between 0 and" + MAX_QPS);
         }
     }
 

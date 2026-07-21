@@ -21,7 +21,7 @@ import org.springframework.security.web.server.context.NoOpServerSecurityContext
 import reactor.core.publisher.Mono;
 
 import java.util.LinkedHashSet;
-/** 响应式安全核心配置*/
+/* 响应式安全核心配置 */
 /** 网关全局 API 路由的“闭合式失败”响应式安全配置*/
 @Configuration(proxyBeanMethods = false)
 @EnableWebFluxSecurity // =启用响应式安全检查

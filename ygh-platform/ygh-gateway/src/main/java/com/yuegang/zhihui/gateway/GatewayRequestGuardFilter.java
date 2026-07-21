@@ -79,14 +79,14 @@ public class GatewayRequestGuardFilter implements WebFilter, Ordered {
 
     // 辅助方法：重新封装 Request，使下游能再次读取 Body 字节流
     private static Mono<Void> replay(ServerWebExchange exchange, WebFilterChain chain, DataBuffer bufferBody) {
-        var guardeRequest = new ServerHttpRequestDecorator(exchange.getRequest()) {
+        var guardRequest = new ServerHttpRequestDecorator(exchange.getRequest()) {
             @Override
             public Flux<DataBuffer> getBody() {
                 if (bufferBody == null) return Flux.empty();
                 return Flux.defer(() -> Flux.just(DataBufferUtils.retain(bufferBody)));
             }
         };
-        Mono<Void> result = Mono.defer(() -> chain.filter(exchange.mutate().request(guardeRequest).build()));
+        Mono<Void> result = Mono.defer(() -> chain.filter(exchange.mutate().request(guardRequest).build()));
         if (bufferBody == null) return result;
         // 在逻辑处理完后释放缓冲区内存
         return result.doFinally(ignored -> DataBufferUtils.release(bufferBody));

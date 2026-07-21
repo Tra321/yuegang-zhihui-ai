@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+//TODO 未完善
 /** 如果启用，则对 JWT 进行 Redis 会话有效性验证（支持主动踢人、强制下线）。 */
 @Component
 @ConditionalOnProperty(prefix = "ygh.security.session-validation", name = "enabled", havingValue = "true")

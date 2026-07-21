@@ -6,8 +6,6 @@ import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.*;
 
-import java.util.List;
-
 /** 创建强制性的发行者（Issuer），时间戳和受众（Audience）验证器链。 */
 final class GatewayJwtValidators {
 
@@ -26,9 +24,13 @@ final class GatewayJwtValidators {
         OAuth2TokenValidator<Jwt> defaults = JwtValidators.createDefaultWithIssuer(issuer);
 
         // 创建自定义受众（aud）验证器
-        OAuth2TokenValidator<Jwt> audienceValidator = new JwtClaimValidator<List<String>>(
+        OAuth2TokenValidator<Jwt> audienceValidator = new JwtClaimValidator<>(
                 JwtClaimNames.AUD,
-                audiences -> audiences != null && audiences.contains(audiences));
+                audClaim -> {
+                    if (audClaim instanceof String s) return audience.equals(s);
+                    if (audClaim instanceof java.util.List<?> list) return list.contains(audience);
+                    return false;
+                });
         // 合并多个验证逻辑
         return new DelegatingOAuth2TokenValidator<>(defaults, audienceValidator);
     }
