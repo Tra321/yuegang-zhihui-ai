@@ -11,7 +11,7 @@ public class RedisKeyBuilder {  // 类开始定义
             Pattern.compile("[a-z0-9][a-z0-9-]{0,31}"); // 定义命名空间段正则，小写字母数字开头，允许中划线，长度32以内
     private static final Pattern IDENTIFIER =
             Pattern.compile("[A-Za-z0-9][A-Za-z0-9._-]{0,127}");
-    public String bulid(String environment,String service,String business,String identifier){  // 核心构造方法
+    public String build(String environment, String service, String business, String identifier){  // 核心构造方法
         requireNamespaceSegment(environment,"environment"); // 校验环境段规范
         requireNamespaceSegment(service,"service"); // 校验服务段规范
         requireNamespaceSegment(business,"business");   // 校验业务段规范

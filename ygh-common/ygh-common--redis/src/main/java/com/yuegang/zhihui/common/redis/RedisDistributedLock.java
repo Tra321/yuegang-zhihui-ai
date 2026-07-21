@@ -1,7 +1,5 @@
 package com.yuegang.zhihui.common.redis;
 
-import reactor.core.publisher.Mono;
-
 import java.time.Duration;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,7 +24,7 @@ public final class RedisDistributedLock{
     }
 
     public Optional<RedisLockHandle> tryAcquire(String key, Duration lease) { // 尝试获取锁的方法
-        requireCannoicalKey(key);   // 校验key 是否负荷系统规范
+        requireCanonicalKey(key);   // 校验key 是否负荷系统规范
         requireLease(lease);   // 校验租约时间是否在合法范围内
         String owner = ownerTokens.generate();  // 生成本次请求唯一持有者标识
         var handle = new RedisLockHandle(key, owner, lease);    // 构造锁句柄
@@ -35,13 +33,13 @@ public final class RedisDistributedLock{
 
     public boolean release(RedisLockHandle handle) { // 释放锁的方法
         Objects.requireNonNull(handle,"handle must not be null"); // 句柄不能为空
-        requireCannoicalKey(handle.key()); // 校验 key 规范
+        requireCanonicalKey(handle.key()); // 校验 key 规范
         return commands.releaseIfOwner(handle.key(), handle.owner());   // 仅当 value 匹配持有者才进行删除，防止误删他人的锁
     }
 
     public boolean renew(RedisLockHandle handle, Duration lease) {
         Objects.requireNonNull(handle,"handle must not be null"); // 句柄不能为空
-        requireCannoicalKey(handle.key());
+        requireCanonicalKey(handle.key());
         requireLease(lease);
         return commands.renewIfOwner(handle.key(), handle.owner(), lease);
     }
@@ -53,7 +51,7 @@ public final class RedisDistributedLock{
         }
     }
 
-    private void requireCannoicalKey(String key) { // 私有方法：强制要求key使用系统规范的格式
+    private void requireCanonicalKey(String key) { // 私有方法：强制要求key使用系统规范的格式
         if (!keys.isCanonical(key)) { // 如果不符合 ygh:env:service..格式
             throw new IllegalArgumentException("lock key must the canonical ygh namespace");    // 抛出安全限制异常
         }
