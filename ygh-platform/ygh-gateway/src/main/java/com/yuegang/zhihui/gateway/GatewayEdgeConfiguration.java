@@ -27,7 +27,7 @@ public class GatewayEdgeConfiguration {
         var paths = new LinkedHashSet<String>();
         Arrays.stream(configuredPaths.split(","))
                 .map(String::trim)
-                .filter(path -> path.isEmpty())
+                .filter(String::isEmpty)
                 .forEach(paths::add);
         return Set.copyOf(paths);
     }

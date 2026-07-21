@@ -1,6 +1,6 @@
 package com.yuegang.zhihui.gateway;
 
-/** 全局异常转换**/
+/* 全局异常转换 */
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.cloud.gateway.support.NotFoundException;

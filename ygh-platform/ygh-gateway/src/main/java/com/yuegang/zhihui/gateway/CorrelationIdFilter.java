@@ -1,6 +1,5 @@
 package com.yuegang.zhihui.gateway;
 
-import jdk.jfr.Category;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -17,7 +16,7 @@ import java.util.regex.Pattern;
  *建立相关的关联标识符，并在身份验证执行前移除所有客户端提供的内部身份头，防止Header注入攻击
  */
 @Component //声明为Spring组件
-public class CorrelationIdFilter implements WebFilter, Ordered { // 实现WebFileter接口和Ordered接口
+public class CorrelationIdFilter implements WebFilter, Ordered { // 实现WebFilter接口和Ordered接口
 
     // 定义安全的ID正则表达式，只允许字母数字和特定的分隔符
     private static final Pattern SAFE_ID = Pattern.compile("[A-Za-z0-9][A-Za-z0-9._-]{7,63}");
@@ -35,7 +34,7 @@ public class CorrelationIdFilter implements WebFilter, Ordered { // 实现WebFil
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        // 从Header获取或生成TeaceId(追踪ID)
+        // 从Header获取或生成TraceId(追踪ID)
         String traceId = resolveId(exchange.getRequest().getHeaders().getFirst(GatewayHeaders.TRACE_ID));
         // 从Header获取生成RequestId(请求唯一ID)
         String requestId = resolveId(exchange.getRequest().getHeaders().getFirst(GatewayHeaders.REQUEST_ID));

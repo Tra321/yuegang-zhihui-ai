@@ -4,7 +4,7 @@ package com.yuegang.zhihui.common.core;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.util.Arrays;
-/** 货币代码 **/
+/* 货币代码 */
 /** 当前虚拟钱包版本支持的货币 */
 
 public enum CurrencyCode implements StableCodeEnum { // 实现稳定代码接口

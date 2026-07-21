@@ -9,7 +9,7 @@ class SessionSecurityContractTest { // 会话安全契约（SessionScurity/Sessi
 
     @Test // 标注为 JUnit5 测试方法
     void shouldAllowInfrastructureToProvideRevocationAndAccountState() { // 测试方法：验证允许基础设施层提供会话撤销与账号启用状态判定
-        SessionaRevocationStore revocations = new FakeRevocationStore(); // 实例化测试用的伪会话撤销存储
+        SessionRevocationStore revocations = new FakeRevocationStore(); // 实例化测试用的伪会话撤销存储
         AccountStatusProvider accounts = userId -> !"disabled-user".equals(userId); // 使用 Lambda 实现账号状态提供者，即 disabled-user 外均启用
 
         revocations.revokeToken("token-1", Instant.parse("2026-07-17T09:00:00z")); // 撤销指定 Token ID
@@ -26,7 +26,7 @@ class SessionSecurityContractTest { // 会话安全契约（SessionScurity/Sessi
         assertThat(accounts.isEnabled("disabled-user")).isFalse(); // 验证被禁用的用户返回false
     }
 
-    private static final class FakeRevocationStore implements SessionaRevocationStore { //静态私有内存假对象：模拟会话撤销存储基础设施
+    private static final class FakeRevocationStore implements SessionRevocationStore { //静态私有内存假对象：模拟会话撤销存储基础设施
 
         private String revokedToken;      // 记录被撤销的 Token
         private String revokedUser;      // 记录被批量撤销会话的用户 ID

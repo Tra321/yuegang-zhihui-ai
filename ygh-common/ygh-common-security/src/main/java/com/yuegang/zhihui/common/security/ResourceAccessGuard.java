@@ -40,6 +40,7 @@ public final class ResourceAccessGuard { // 定义资源访问守卫类，执行
         }
     }
 
+    //TODO 待完善
     public <I> void requireOwnerOrPermission(
             CurrentUserPrincipal principal,
             I resourcesId,

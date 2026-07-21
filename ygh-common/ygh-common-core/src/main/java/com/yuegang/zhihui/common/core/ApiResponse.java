@@ -17,7 +17,7 @@ public record ApiResponse<T>(  // 使用Java Record定义响应时间
     }
 
     public static <T> ApiResponse<T> success(T data, String traceId) {    // 静态快捷成功方法
-        return new ApiResponse<>(    // 创建成功的响应对象
+        return new ApiResponse<>(    // 创建成功响应对象
                 ErrorCode.SUCCESS.code(),    // 使用预定义的成功状态码
                 ErrorCode.SUCCESS.defaultMessage(),    // 使用默认成功消息
                 data,    // 传入的数据

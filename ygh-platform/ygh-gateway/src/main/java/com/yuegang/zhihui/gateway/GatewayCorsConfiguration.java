@@ -45,7 +45,7 @@ public class GatewayCorsConfiguration {
         cors.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         // 设置允许的请求头
         cors.setAllowedHeaders(List.of(
-                "Authorization", "Content-Type", "Idemotency-Key", "X-Request-Id",
+                "Authorization", "Content-Type", "Idempotency-Key", "X-Request-Id",
                 "X-Trace_id", "Accept-Language")
         );
         // 设置允许浏览器读取的响应头
@@ -67,7 +67,7 @@ public class GatewayCorsConfiguration {
         try {
             uri = URI.create(origin);
         } catch (IllegalArgumentException exception) {
-            throw new IllegalArgumentException("Incalid CORS origins", exception);
+            throw new IllegalArgumentException("Invalid CORS origins", exception);
         }
         boolean http = "http".equalsIgnoreCase(uri.getScheme())
                 || "https".equalsIgnoreCase(uri.getScheme());

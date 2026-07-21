@@ -1,7 +1,6 @@
 package com.yuegang.zhihui.gateway;
 
-
-/** JWT验证链工厂 **/
+/* JWT验证链工厂 */
 
 import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
