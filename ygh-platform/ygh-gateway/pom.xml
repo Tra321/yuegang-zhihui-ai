@@ -27,10 +27,10 @@
             <groupId>com.yuegang.zhihui</groupId>
             <artifactId>ygh-common-security</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.yuegang.zhihui</groupId>-->
-<!--            <artifactId>ygh-common-redis</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.yuegang.zhihui</groupId>
+            <artifactId>ygh-common-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>

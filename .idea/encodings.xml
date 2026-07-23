@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/ygh-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-mq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-mybatis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-mybatis/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-redis/src/main/java" charset="UTF-8" />
