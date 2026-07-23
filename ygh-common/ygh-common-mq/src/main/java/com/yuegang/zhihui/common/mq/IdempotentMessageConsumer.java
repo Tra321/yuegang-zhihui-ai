@@ -51,9 +51,9 @@ public class IdempotentMessageConsumer {
      * 核心入口方法：执行幂等校验并处理业务。
      * */
     public <T> MessageConsumptionResult consume(// 泛型方法
-                                                    DomainEvent<T> event, // 领域事件
-                                                    int deliveryAttempt, // 当前是第几次投递
-                                                    MessageHandler<T> handler // 具体的业务处理逻辑
+                                                DomainEvent<T> event, // 领域事件
+                                                int deliveryAttempt, // 当前是第几次投递
+                                                MessageHandler<T> handler // 具体的业务处理逻辑
     ) {
         Objects.requireNonNull(event, "event must not be null"); // 事件不能为空
         Objects.requireNonNull(handler, "handler must not be null"); // 处理器不能为空
@@ -83,10 +83,10 @@ public class IdempotentMessageConsumer {
       执行已认领消息的处理逻辑
       */
     private <T> MessageConsumptionResult processClaim( // 私有处理方法
-            DomainEvent<T> event,           // 事件
-            int deliveryAttempt,            // 次数
-            MessageHandler<T> handler,      // 业务逻辑
-            MessageProcessingClaim claim    //租约凭证
+                                                       DomainEvent<T> event,           // 事件
+                                                       int deliveryAttempt,            // 次数
+                                                       MessageHandler<T> handler,      // 业务逻辑
+                                                       MessageProcessingClaim claim    //租约凭证
     ) { // 逻辑开始
         try {
             boolean completed = store.executeAndMarkSuccess( // 4.在同一个数据库事物中执行业务并标记为“已完成”

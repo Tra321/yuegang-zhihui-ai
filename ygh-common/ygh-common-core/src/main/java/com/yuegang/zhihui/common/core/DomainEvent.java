@@ -23,5 +23,5 @@ public interface DomainEvent<T> { // 领域时间契约
 
     default int eventVersion() { return metadata().eventVersion(); }
 
-
+    default OffsetDateTime occurredAt() { return metadata().occurredAt(); }
 }
