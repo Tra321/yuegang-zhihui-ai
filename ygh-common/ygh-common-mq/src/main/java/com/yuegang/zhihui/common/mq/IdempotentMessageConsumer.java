@@ -89,7 +89,7 @@ public class IdempotentMessageConsumer {
                                                        MessageProcessingClaim claim    //租约凭证
     ) { // 逻辑开始
         try {
-            boolean completed = store.executeAndMarkSuccess( // 4.在同一个数据库事物中执行业务并标记为“已完成”
+            boolean completed = store.executeAndMarkSuccessed( // 4.在同一个数据库事物中执行业务并标记为“已完成”
                     claim, () -> handler.handle(event)); // 调用传入的业务处理
             return completed // 更具事物处理提交返回结果
                     ? MessageConsumptionResult.ACKNOWLEDGED // 成功：响应ACK
@@ -126,7 +126,7 @@ public class IdempotentMessageConsumer {
     private MessageProcessingClaim validatedClaim(MessageClaimResult result, String eventId) { // 内部校验以实例的合法性
         MessageProcessingClaim claim = result.claim().orElseThrow( // 必须存在凭证对象
                 () -> new IllegalArgumentException("CLAIMED result has no claim")); // 否则抛出状态异常
-        if (!consumerGroup.equals(claim.consumerGroup()) || !eventId.equals(claim.evenId())) { // 必须匹配当前处理的目标
+        if (!consumerGroup.equals(claim.consumerGroup()) || !eventId.equals(claim.eventId())) { // 必须匹配当前处理的目标
             throw new IllegalArgumentException("store returned a claim for another message"); // 否则抛出异常
         }
         return claim; // 返回有效凭证

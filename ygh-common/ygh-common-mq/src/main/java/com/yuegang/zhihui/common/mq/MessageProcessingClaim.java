@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 /** 包含持有者信息的认证凭证，用于防止已超时的消费者线程误写其他节点的尝试结果。 */
 public record MessageProcessingClaim( // 凭证记录类
                                       String consumerGroup,         // 组 ID
-                                      String evenId,                // 消息唯一 ID
+                                      String eventId,                // 消息唯一 ID
                                       @JsonIgnore String owner      // 持有者令牌 (JSON序列化时忽略以防泄露)
 ) {
 
@@ -20,7 +20,7 @@ public record MessageProcessingClaim( // 凭证记录类
         if (consumerGroup == null || !GROUP.matcher(consumerGroup).matches()) { // 校验组
             throw new IllegalArgumentException("consumerGroup is malformed"); // 报错
         }
-        if (evenId == null || evenId.isBlank() || evenId.length() > 128) { // 校验消息ID
+        if (eventId == null || eventId.isBlank() || eventId.length() > 128) { // 校验消息ID
             throw new IllegalArgumentException("eventId is malformed"); // 报错
         }
         if (owner == null || !OWNER.matcher(owner).matches()) { // 验证持有者身份令牌
@@ -31,6 +31,6 @@ public record MessageProcessingClaim( // 凭证记录类
     @Override
     public String toString() { // 重写 toString 实现脱敏
         return "MessageProcessingClaim[consumerGroup=" + consumerGroup
-                + ", eventId = " + evenId + ", owner=[REDACTED]]"; // 在日志中隐藏真实令牌内容
+                + ", eventId = " + eventId + ", owner=[REDACTED]]"; // 在日志中隐藏真实令牌内容
     }
 }
