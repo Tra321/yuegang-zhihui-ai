@@ -31,20 +31,52 @@
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-knowledge/ygh-knowledge-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-notification/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-notification/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-notification/ygh-notification-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-notification/ygh-notification-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-notification/ygh-notification-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-notification/ygh-notification-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-order/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-order/ygh-order-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-order/ygh-order-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-order/ygh-order-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-order/ygh-order-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-product/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-product/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-product/ygh-product-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-product/ygh-product-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-product/ygh-product-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-product/ygh-product-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-search/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-search/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-systrm/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-systrm/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-search/ygh-search-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-search/ygh-search-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-search/ygh-search-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-search/ygh-search-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-system/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-system/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-system/ygh-system-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-system/ygh-system-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-system/ygh-system-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-system/ygh-system-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-training/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-training/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-training/ygh-training-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-training/ygh-training-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-training/ygh-training-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-training/ygh-training-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-user/ygh-user-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-user/ygh-user-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-user/ygh-user-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-user/ygh-user-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-wallet/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-applications/ygh-wallet/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-wallet/ygh-wallet-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-wallet/ygh-wallet-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-wallet/ygh-wallet-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ygh-applications/ygh-wallet/ygh-wallet-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ygh-common/ygh-common-core/src/main/java" charset="UTF-8" />

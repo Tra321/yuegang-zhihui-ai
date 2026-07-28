@@ -9,6 +9,8 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/ygh-applications/ygh-product/ygh-search-api/pom.xml" />
+        <option value="$PROJECT_DIR$/ygh-applications/ygh-systrm/pom.xml" />
         <option value="$PROJECT_DIR$/ygh-platform/ygh-geteway/pom.xml" />
       </set>
     </option>

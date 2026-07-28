@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.yuegang.zhihui</groupId>
@@ -33,9 +32,10 @@
         <module>ygh-order</module>
         <module>ygh-product</module>
         <module>ygh-search</module>
-        <module>ygh-systrm</module>
+        <module>ygh-system</module>
         <module>ygh-training</module>
         <module>ygh-user</module>
         <module>ygh-wallet</module>
+        <module>ygh-system</module>
     </modules>
 </project>
