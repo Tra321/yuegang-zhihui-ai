@@ -34,5 +34,6 @@
         <module>ygh-common-mybatis</module>
         <module>ygh-common-mq</module>
         <module>ygh-common-web</module>
+        <module>ygh-common-test</module>
     </modules>
 </project>
