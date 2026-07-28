@@ -33,7 +33,7 @@ public class FlywayConfigurationGuard { // 防止不合规的 Flyway 配置被�
         Objects.requireNonNull(configuration, "configuration must not be null");
         Set<String> configuredLocations = Set.of(configuration.getLocations()).stream() // 获取当前实际配置的路径
                 .map(Location::getDescriptor)
-    .collect(Collectors.toUnmodifiableSet());
+                .collect(Collectors.toUnmodifiableSet());
         // 强制安全性校验项
         boolean safe = configuration.isValidateMigrationNaming() // 必须开启命名校验
                 && configuration.isValidateOnMigrate() // 必须在迁移时校验
